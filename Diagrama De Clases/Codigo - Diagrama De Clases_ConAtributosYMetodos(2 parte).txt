@@ -1,0 +1,50 @@
+@startuml
+Hide Circle
+SKINPARAM classAttributeIconSize 0
+
+class SistemaDeReserva{
+  -usuarios : ArrayList<Usuario>
+  -vehiculos : ArrayList<Vehiculo>
+  -oficinas : ArrayList<Oficina>
+  -reservas : ArrayList<Reserva>
+  +SistemaDeReserva()
+  +SistemaDeReserva deSerealizar(String a)
+  +SistemaDeReserva serializar(String a)
+  +Usuario buscarUsuario(String datos)
+}
+
+class Administrador{
+  static int PRECIO_AUTO
+  static int PRECIO_CAMIONETA
+  +Administrador()
+  +String toString()
+  +boolean proceder(SistemaDeReserva sistemaDeReserva)
+}
+
+class Validador{
+  +void darDeAltaCliente(SistemaDeReserva sistemaDeReserva)
+  +void darDeBajaCliente(SistemaDeReserva sistemaDeReserva)
+  +void modificarCliente(SistemaDeReserva sistemaDeReserva)
+  +char validarNumIngresado(char min, char max, char ingresado, String mensaje)
+  +String validarTelefono(String telefono, String mensaje)
+  +String validarPatente(String patente)
+  +String verificarRepeticionDePatente(String patenteIngresada, SistemaDeReserva sistemaDeReserva)
+  +String verificarRepeticionDeUsuario(String usuarioIngresado, SistemaDeReserva sistemaDeReserva)
+  +int validarDNI(int DNIIngresado)
+}
+
+class EntradaSalida{
+  +static char leerChar(String texto)
+  +static String leerString(String texto)
+  +static boolean leerBoolean(String texto)
+  +static void mostrarString(String s)
+  +static String leerPassword(String texto)
+  +static int leerEntero(String texto)
+  +static float leerFloat(String texto)
+  +static Date leerDate(String texto)
+  -static filtrarCadenaHTML(String cadena)
+  +static String leerUsuario(SistemaDeReserva sistemaDeReserva)
+}
+
+
+@enduml

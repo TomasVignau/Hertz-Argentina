@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor "Cliente" as cl
+actor "Vendedor" as vd
+actor "Administrador" as ad
+
+rectangle Empresa {
+  usecase "Consultar" as UC1
+  usecase "Administrar  Clientes" as UC2
+  usecase "Administrar Reservas" as UC3
+  usecase "Obtener Listado Vendedores" as UC4
+  usecase "Administrar Vehiculos" as UC5
+  usecase "Administrar Usuarios" as UC6
+  usecase "Salir del Sistema" as UC7
+  usecase "Administrar Administradores" as UC8
+}
+cl --> UC1
+vd --> UC2
+vd --> UC3
+vd --> UC7
+ad --> UC4
+ad --> UC5
+ad --> UC6
+ad --> UC7
+ad --> UC8
+
+@enduml

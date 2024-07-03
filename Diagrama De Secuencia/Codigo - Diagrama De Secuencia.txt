@@ -1,0 +1,66 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+
+actor User
+participant "Administrador" as A
+participant "Validador" as B
+participant "EntradaSalida" as D
+participant "Vendedor" as V
+participant "sistemaDeReserva" as E
+
+
+User -> A: proceder(SistemaDeReserva sistemaDeReserva )
+activate A
+
+
+A -> D: leerChar()
+activate D
+return opc:char
+
+
+
+alt opc = '2'
+A -> D: mostrarString()
+A -> D: leerChar()
+activate D
+return opcion1 : char
+
+alt opcion1 = '1'
+
+A -> D: mostrarString()
+
+A -->> V: <<create>>
+
+A -> D: leerString()
+activate D
+return usuario:String
+
+A -> B: verificarRepeticionDeUsuario(usuario, sistemaDeReserva)
+activate B
+return usuarioValidado:String
+
+A -> V: setUsuario(usuarioValidado)
+
+A -> D: leerString()
+activate D
+return clave:String
+
+A -> V: setPassword(clave)
+A -> V: setCantRecaudada(0)
+
+A -> E: getUsuarios()
+activate E 
+return usuarios:ArrayList<Usuario>
+
+A -> E: usuarios.add(vendedor)
+
+A -> D: mostrarString()
+end 
+end
+deactivate A
+
+
+@enduml

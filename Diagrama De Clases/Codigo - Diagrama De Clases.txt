@@ -1,0 +1,68 @@
+@startuml
+Hide Circle
+SKINPARAM classAttributeIconSize 0
+
+
+class Main{
+  +static void Main(String[] args)
+}
+class Cliente{
+
+}
+class Reserva{
+
+}
+class SistemaDeReserva{
+
+}
+class Vehiculo{
+
+}
+class Administrador{
+
+}
+class Vendedor{
+
+}
+class CompararVendedores{
+
+}
+class Validador{
+
+}
+class Usuario <<abstract>>{
+
+}
+class Oficina{
+
+}
+class EntradaSalida{
+  
+}
+class Control{
+  
+}
+
+Main -.-> Control
+Control -.-> SistemaDeReserva
+
+Usuario <|--- Cliente
+Usuario <|--- Vendedor
+Usuario <|--- Administrador
+
+SistemaDeReserva *--- "*" Vehiculo : vehiculos 
+SistemaDeReserva *--- "*" Oficina : oficinas
+SistemaDeReserva *--- "*" Reserva : reservas 
+SistemaDeReserva *--- "*" Usuario : usuarios
+
+Reserva o--- Cliente
+
+Vehiculo -.-> Oficina
+
+CompararVendedores -.-> Vendedor
+
+Reserva o--- Oficina
+Reserva o--- "*" Vehiculo : vehiculos
+
+
+@enduml

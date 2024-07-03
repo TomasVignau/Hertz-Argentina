@@ -1,0 +1,71 @@
+@startuml
+Hide Circle
+SKINPARAM classAttributeIconSize 0
+
+
+class Main{
+  +static void Main(String[] args)
+}
+class Cliente{
+  -dni : int 
+  -nombre : String
+  -direccion : String
+  -telefono : String
+  -codCliente : String
+  +boolean proceder(SistemaDeReserva sistemaDeReserva)
+  +String toString()
+}
+class Reserva{
+  -codReserva : String
+  -cliente : Cliente
+  -vehiculos : ArrayList<Vehiculo>
+  -fechaInicio : Date
+  -fechaFinal : Date
+  -precioAlquilerVehiculo : float
+  -precioTotal : float
+  -oficinaDeRetiro : Oficina
+  -medioPorDondeSeRealizaReserva : String
+  + String toString()
+}
+
+class Vehiculo{
+  -patente : String
+  -modelo : String
+  -color : String
+  -marca : String
+  -entregado : boolean
+  -precio : float
+  -oficinaInicial : Oficina
+  -litrosDeGasolinaAlIniciarReserva : float
+  -litrosDeGasolinaAlFinalizarReserva : float
+  +String toString()
+}
+
+class Vendedor{
+  static int PRECIO_POR_LITRO_COMBUSTIBLE
+  -cantRecaudada : float
+  -boolean proceder(SistemaDeReserva sistemaDeReserva)
+  +String toString()
+}
+class CompararVendedores{
+  -int compare(Vendedor v1, Vendedor v2)
+}
+
+class Usuario <<abstract>>{
+  -usuario : String
+  -password : String
+}
+class Oficina{
+  -codOficina : String
+  -provincia : String
+  -direccion : String
+  -telefono : String
+  +String toString()
+}
+
+class Control{
+  +void ejecutar()
+}
+
+
+@enduml
